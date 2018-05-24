@@ -1,0 +1,19 @@
+{
+  "name": "wedding-tickets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "iohook": "^0.2.0",
+    "socketio": "^1.0.0"
+  }
+}
