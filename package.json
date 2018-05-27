@@ -12,8 +12,9 @@
     "nodemon": "^1.17.4"
   },
   "dependencies": {
+    "child-process": "^1.0.2",
+    "childprocess": "^2.0.2",
     "express": "^4.16.3",
-    "iohook": "^0.2.0",
     "socketio": "^1.0.0"
   }
 }
