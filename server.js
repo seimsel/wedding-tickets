@@ -3,8 +3,15 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const childProcess = require('child_process');
-const Bundler = require('parcel-bundler');
-const bundler = new Bundler('public/index.html');
+
+
+if (process.env.NODE_ENV !== 'production') {
+    const Bundler = require('parcel-bundler');
+    const bundler = new Bundler('public/index.html');
+    app.use(bundler.middleware());
+} else {
+    app.use(express.static('dist'));
+}
 
 const state = {
     waitingNumbers: [
@@ -15,7 +22,6 @@ const state = {
 
 childProcess.exec('echo -e "\x1d\x21\x60" > /dev/ttyUSB0');
 
-app.use(bundler.middleware());
 
 function waitingNumbersChanged(socket) {
     if (!socket) {
@@ -33,7 +39,7 @@ io.on('connection', (socket) => {
 
     socket.on('print', () => {
         state.waitingNumbers.push(state.nextNumber);
-        childProcess.exec('echo -e "\n\n\n             128 \n\n\n\n\n\n" > /dev/ttyUSB0');
+        childProcess.exec('echo -e "\n\n\n              '+state.nextNumber+'\n\n\n\n\n\n" > /dev/ttyUSB0');
         state.nextNumber++;
         waitingNumbersChanged();
     });
