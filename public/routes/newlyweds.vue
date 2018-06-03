@@ -5,7 +5,6 @@
             <div class="button" @click="needABreak()">Pause</div>
             <div class="button" @click="next()">Nächste</div>
         </footer>
-
     </div>
 </template>
 

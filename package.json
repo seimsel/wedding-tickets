@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "parcel build public/index.html",
+    "build": "parcel build public/index.html --no-minify",
     "serve:dev": "node server.js",
     "serve:prod": "NODE_ENV=production node server.js"
   },

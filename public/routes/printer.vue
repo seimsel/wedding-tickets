@@ -3,7 +3,6 @@
 </template>
 
 <script>
-    import tickets from '../components/tickets';
     import socket from '../socket/socket';
 
     export default {
