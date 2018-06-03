@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        waitingNumbers: []
+        waitingNumbers: [],
+        hasMore: false
     },
     mutations: {
         waitingNumbersChanged(state, payload) {

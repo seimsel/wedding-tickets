@@ -4,7 +4,7 @@
             <h2>Warten</h2>
             <ul class="hcentered">
                 <li class="number" v-for="number in waitingNumbers" :key="number">{{ number }}</li>
-                <li v-if="hasMore">vvv</li>
+                <li v-if="hasMore">...</li>
             </ul>
         </div>
 

@@ -2,8 +2,8 @@
     <div class="col">
         <tickets />
         <footer>
-            <button @click="needABreak()">Pause</button>
-            <button @click="next()">Nächste</button>
+            <div class="button" @click="needABreak()">Pause</div>
+            <div class="button" @click="next()">Nächste</div>
         </footer>
 
     </div>
@@ -40,10 +40,14 @@
         display: flex;
     }
 
-    footer button {
+    footer .button {
+        color: black;
+        background-color: white;
         display: flex;
         flex-grow: 1;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
         height: 30vmin;
+        border: black 1px solid;
     }
 </style>

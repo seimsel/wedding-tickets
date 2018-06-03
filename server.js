@@ -20,8 +20,7 @@ const state = {
     nextNumber: 1
 };
 
-childProcess.exec('echo -e "\x1d\x21\x60" > /dev/ttyUSB0');
-
+childProcess.execFileSync('./printer_setfont.sh');
 
 function waitingNumbersChanged(socket) {
     if (!socket) {
@@ -30,7 +29,7 @@ function waitingNumbersChanged(socket) {
 
     socket.emit('waitingNumbersChanged', {
         waitingNumbers: state.waitingNumbers.slice(0, 10),
-        hasMore: state.waitingNumbers > 10
+        hasMore: state.waitingNumbers.length > 10
     });
 }
 
@@ -39,7 +38,7 @@ io.on('connection', (socket) => {
 
     socket.on('print', () => {
         state.waitingNumbers.push(state.nextNumber);
-        childProcess.exec('echo -e "\n\n\n              '+state.nextNumber+'\n\n\n\n\n\n" > /dev/ttyUSB0');
+        childProcess.execFileSync('./printer_print_number.sh');
         state.nextNumber++;
         waitingNumbersChanged();
     });
